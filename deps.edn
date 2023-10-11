@@ -1,0 +1,29 @@
+{:deps
+ {io.github.aamedina/rdf
+  {:sha     "8d40e9ac62e97f4fbc1d114b8664a02e05b3ed63"
+   :git/url "https://github.com/aamedina/rdf.git"}}
+ :paths ["src/clj" "src/cljc" "classes" "resources"]
+ :aliases
+ {:dev
+  {:extra-deps
+   {io.github.aamedina/qdrant
+    {:sha     "7e581d3247cf83e49b851e482a8e3b40f7838c4c"
+     :git/url "https://github.com/aamedina/qdrant.git"}
+    org.obolibrary.robot/robot-core
+    {:mvn/version "1.9.5"}
+    com.walmartlabs/schematic
+    {:mvn/version "1.3.0"}
+    com.stuartsierra/component.repl
+    {:mvn/version "1.0.0"}
+    org.clojure/test.check
+    {:mvn/version "1.1.1"}
+    org.clojure/tools.namespace
+    {:mvn/version "1.4.4"}
+    org.slf4j/slf4j-simple
+    {:mvn/version "2.0.7"}
+    vlaaad/reveal
+    {:mvn/version "1.3.280"}}
+   :extra-paths ["dev"]
+   :jvm-opts    ["-XX:-OmitStackTraceInFastThrow"
+                 "-XX:+HeapDumpOnOutOfMemoryError"
+                 "-Dorg.slf4j.simpleLogger.defaultLogLevel=warn"]}}}

@@ -1,0 +1,10 @@
+resources/net/wikipunk/d3fend/d3fend.jsonl filter=lfs diff=lfs merge=lfs -text
+resources/net/wikipunk/d3fend/test/gpt4/*.edn filter=lfs diff=lfs merge=lfs -text
+resources/net/wikipunk/d3fend/test/gpt35/*.edn filter=lfs diff=lfs merge=lfs -text
+resources/net/wikipunk/d3fend/test/ft/*.edn filter=lfs diff=lfs merge=lfs -text
+resources/net/wikipunk/d3fend/test2/gpt4/*.edn filter=lfs diff=lfs merge=lfs -text
+resources/net/wikipunk/d3fend/test2/gpt35/*.edn filter=lfs diff=lfs merge=lfs -text
+resources/net/wikipunk/d3fend/test2/ft/*.edn filter=lfs diff=lfs merge=lfs -text
+resources/net/wikipunk/d3fend/test3/gpt4/*.edn filter=lfs diff=lfs merge=lfs -text
+resources/net/wikipunk/d3fend/test3/gpt35/*.edn filter=lfs diff=lfs merge=lfs -text
+resources/net/wikipunk/d3fend/test3/ft/*.edn filter=lfs diff=lfs merge=lfs -text
