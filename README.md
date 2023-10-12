@@ -1,5 +1,5 @@
 # net.wikipunk/d3fend-ft
-This is the code I used to experiment with OpenAI fine-tuning and
+This is the [code](dev/dev.clj) I used to experiment with OpenAI fine-tuning and
 D3FEND.
 
 ## :dev
