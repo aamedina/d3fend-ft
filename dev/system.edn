@@ -2,7 +2,7 @@
           :uri          "asami:mem://vocab"}
  :vocab  {:sc/create-fn net.wikipunk.rdf/map->UniversalTranslator
           :sc/refs      [:d3f :openai :qdrant :env]
-          :context      [net.wikipunk.d3fend.boot]
+          :context      []
           :finalize?    true}
  :d3f    {:sc/create-fn net.wikipunk.d3fend/map->D3FEND}
  :openai {:sc/create-fn net.wikipunk.openai/map->Client}
