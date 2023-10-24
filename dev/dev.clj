@@ -31,12 +31,11 @@
    [net.wikipunk.mop :as mop]
    [net.wikipunk.rdf :as rdf :refer [doc]]
    [net.wikipunk.datomic.boot :as db]
-   [net.wikipunk.qdrant :as qdrant]
-   [net.wikipunk.openai :as openai]
    [zprint.core :as zprint]
    [asami.core :as asami]
    [michelangelo.core :as ma]
    [donatello.ttl :as ttl]
+   [quoll.rdf :as qrdf]
    [wkok.openai-clojure.api :as api]))
 
 (set-init
@@ -93,17 +92,17 @@
     (walk/postwalk (fn [form]
                      (cond
                        (and (:rdf/type form) (:rdf/value form))
-                       (ttl/->TypedLiteral (:rdf/value form) (:rdf/type form))
+                       (qrdf/->TypedLiteral (:rdf/value form) (:rdf/type form))
                        (and (:rdf/value form) (:rdf/language form))
-                       (ttl/->LangLiteral (:rdf/value form) (:rdf/language form))
+                       (qrdf/->LangLiteral (:rdf/value form) (:rdf/language form))
                        (and (:xsd/anyURI form) (== (count form) 1))
                        (java.net.URI/create (:xsd/anyURI form))
                        (and (:rdf/value form) (== (count form) 1))
                        (:rdf/value form)
                        (and (map? form)
                             (== (count form) 1)
-                            (some datatypes (keys form)))
-                       (ttl/->TypedLiteral (first (vals form)) (first (keys form)))
+                            (some #(isa? % :rdfs/Datatype) (keys form)))
+                       (qrdf/->TypedLiteral (first (vals form)) (first (keys form)))
                        :else form))
                    x)))
 
@@ -164,8 +163,14 @@
                (example ident)))
        (into [])))
 
-(defmethod ttl/serialize java.math.BigDecimal [x] (str x))
-(defmethod ttl/serialize clojure.lang.BigInt [x] (str x))
+(extend-protocol ttl/Serializable
+  java.math.BigDecimal
+  (serialize [x]
+    (str x))
+  
+  clojure.lang.BigInt
+  (serialize [x]
+    (str x)))
 
 (defn chat
   "Chat with the OpenAI API."

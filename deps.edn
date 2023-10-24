@@ -1,15 +1,16 @@
 {:deps
  {io.github.aamedina/rdf
-  {:sha     "8d40e9ac62e97f4fbc1d114b8664a02e05b3ed63"
-   :git/url "https://github.com/aamedina/rdf.git"}}
+  {:sha     "f13bb8697009edba2f502b7335c530bf155a675d"
+   :git/url "https://github.com/aamedina/rdf.git"}
+  net.clojars.wkok/openai-clojure
+  {:mvn/version "0.11.0"}
+  org.clojars.quoll/donatello
+  {:mvn/version "1.3.4"}}
  :paths ["src/clj" "src/cljc" "classes" "resources"]
  :aliases
  {:dev
   {:extra-deps
-   {io.github.aamedina/qdrant
-    {:sha     "7e581d3247cf83e49b851e482a8e3b40f7838c4c"
-     :git/url "https://github.com/aamedina/qdrant.git"}
-    org.obolibrary.robot/robot-core
+   {org.obolibrary.robot/robot-core
     {:mvn/version "1.9.5"}
     com.walmartlabs/schematic
     {:mvn/version "1.3.0"}
